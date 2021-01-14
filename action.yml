@@ -1,10 +1,22 @@
-name: 'Container Action Template'
+name: 'Container Action Template... For Feedback of course'
 description: 'Get started with Container actions'
-author: 'GitHub'
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: arduino/arduino-lint-action@v1
+author: 'J3T4R0 -- Ryan Niemi'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  path: ./feedback
+  version: 1.8.7
+  compliance: permissive
+  library-manager: submit
+  project-type: all
+  recursive: false
+  token: ${{ secrets.SECRET_NAME }}
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  
